@@ -72,31 +72,30 @@ routes.get('/:id/enrolledStudent',function(req,res){
   })
 })
 
-routes.get('/:studentId/:subjectId/givescore', function(req,res){
+routes.get('/:id/givescore', function(req,res){
   StudentSubject.findOne({
     where:{
-      StudentId:req.params.studentId,
-      SubjectId:req.params.subjectId
+      id: req.params.id
     }
   }).then(studentSubject=> {
     let obj = {
-      studentId: studentSubject.StudentId,
+      id: studentSubject.id,
       subjectId: studentSubject.SubjectId,
       score: studentSubject.score
     }
-    response.render('subjects/givescore.ejs',obj)
+    res.render('subjects/givescore.ejs',obj)
   })
 })
 
-routes.post('/:studentId/:subjectId/givescore',function(req,res){
+routes.post('/:id/givescore',function(req,res){
   StudentSubject.update({
     score: req.body.newScore
   },{
     where:{
-      StudentId : req.body.studentId,
-      SubjectId : req.body.subjectId}
+      id: req.body.id
+    }
   }).then(function(){
-    response.redirect(`/subjects/${req.params.subjectId}/enrolledStudents`)
+    res.redirect(`/subjects/${req.body.subjectId}/enrolledStudent`)
   })
 })
 
