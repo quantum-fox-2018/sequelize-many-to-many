@@ -33,10 +33,10 @@ module.exports = (sequelize, DataTypes) => {
         where: {
           id: searchedId
         }
-      }).then(subject=>{
-          subject.getStudents().then(students=>{
-            subject.students = students
-            resolve(subject)
+      }).then(dataSubject=>{
+          dataSubject.getStudents().then(students=>{
+            dataSubject.students = students
+            resolve(dataSubject)
           })
           .catch(err=>{
             reject(err)

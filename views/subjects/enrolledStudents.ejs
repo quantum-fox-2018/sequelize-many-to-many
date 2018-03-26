@@ -8,13 +8,15 @@
     </thead>
     <tbody>
       <% for(let i=0; i<subjects.students.length; i++){ %>
-        <td><%= subjects.students[i].firstName %> <%= subjects.students[i].lastName %></td>
-        <% if(subjects.students[i].StudentSubject.score==null){ %>
-          <td><a href="/students/<%= subjects.Students[i].StudentSubject.StudentId %>/
-            <%= subjects.Students[i].StudentSubject.SubjectId %>/givescore">Give Score</a></td>
-        <% } else { %>
-          <td><%= subjects.students[i].StudentSubject.score %></td>
-        <% } %>
+        <tr>
+          <td><%= subjects.students[i].firstName %> <%= subjects.students[i].lastName %></td>
+          <% if(subjects.students[i].StudentSubject.score==null){ %>
+            <td><a href="/students/<%= subjects.students[i].StudentSubject.id %>/
+              <%= subjects.students[i].StudentSubject.StudentId %>/givescore">Give Score</a></td>
+          <% } else { %>
+            <td><%= subjects.students[i].StudentSubject.score %></td>
+          <% } %>
+        </tr>
       <% } %>
     </tbody>
   </table>

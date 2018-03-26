@@ -1,4 +1,5 @@
 const routes = require('express').Router()
+const Op = require('sequelize').Op
 
 const {Subject,Student,StudentSubject} = require('../models')
 
@@ -63,27 +64,39 @@ routes.get('/:id/delete',function(req,res){
 })
 
 routes.get('/:id/enrolledStudent',function(req,res){
-  Subject.withStudent(req.params.id).then(newDataSubject=>{
-    let obj = {
-      subjects: newDataSubject
-    }
-    // res.render('subjects/enrolledStudents.ejs',obj)
-    res.send(newDataSubject.students)
+  Subject.withStudent(req.params.id).then(subject=>{
+      let obj = {
+        subjects: subject
+      }
+      res.render('subjects/enrolledStudents.ejs',obj)
   })
 })
 
-routes.get('/:studentId/:subjectId/givescore', function(request,response){
+routes.get('/:studentId/:subjectId/givescore', function(req,res){
   StudentSubject.findOne({
-    where:
-    {StudentId:request.params.studentId,
-     SubjectId:request.params.subjectId}
-  }).then((dataStudentSubject)=> {
+    where:{
+      StudentId:req.params.studentId,
+      SubjectId:req.params.subjectId
+    }
+  }).then(studentSubject=> {
     let obj = {
-      studentId: dataStudentSubject.StudentId,
-      subjectId: dataStudentSubject.SubjectId,
-      score: dataStudentSubject.score
+      studentId: studentSubject.StudentId,
+      subjectId: studentSubject.SubjectId,
+      score: studentSubject.score
     }
     response.render('subjects/givescore.ejs',obj)
+  })
+})
+
+routes.post('/:studentId/:subjectId/givescore',function(req,res){
+  StudentSubject.update({
+    score: req.body.newScore
+  },{
+    where:{
+      StudentId : req.body.studentId,
+      SubjectId : req.body.subjectId}
+  }).then(function(){
+    response.redirect(`/subjects/${req.params.subjectId}/enrolledStudents`)
   })
 })
 
