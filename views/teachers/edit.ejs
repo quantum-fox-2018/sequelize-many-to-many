@@ -1,0 +1,18 @@
+<%- include ../partials/header.ejs%>
+
+  <h3>Edit Data Teacher</h3><br>
+  <p><%= err %></p>
+  <form class="" action="" method="post">
+    <input type="hidden" name="id" value="<%= obj.id %>">
+    <input type="text" name="newFirstName" value="<%= obj.firstName %>" placeholder="first name">
+    <input type="text" name="newLastName" value="<%= obj.lastName %>" placeholder="last name">
+    <input type="text" name="newEmail" value="<%= obj.email %>" placeholder="email">
+    <select class="" name="getSubject">
+      <% for(let i=0; i<obj.subjects.length; i++){ %>
+        <option value="<%= obj.subjects[i].id %>"><%= obj.subjects[i].name %></option>
+      <% } %>
+    </select>
+    <input type="submit">
+  </form>
+
+<%- include ../partials/footer.ejs%>

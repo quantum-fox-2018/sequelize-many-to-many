@@ -1,0 +1,12 @@
+<%- include ../partials/header.ejs%>
+
+  <h3>Edit Data Student</h3><br>
+  <form class="" action="" method="post">
+    <input type="hidden" name="id" value="<%= id %>">
+    <input type="text" name="newFirstName" value="<%= firstName %>" placeholder="first name">
+    <input type="text" name="newLastName" value="<%= lastName %>" placeholder="last name">
+    <input type="text" name="newEmail" value="<%= email %>" placeholder="email">
+    <input type="submit">
+  </form>
+
+<%- include ../partials/footer.ejs%>
