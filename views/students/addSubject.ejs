@@ -1,0 +1,28 @@
+<%- include ../partials/header.ejs%>
+
+  <h3>Add Data Subject to Student</h3><br>
+  <table>
+    <tr>
+      <th>First Name</th>
+      <td><%= studentFirstName %></td>
+    </tr>
+    <tr>
+      <th>Last Name</th>
+      <td><%= studentLastName %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= studentEmail %></td>
+    </tr>
+  </table><br>
+  <form class="" action="" method="post">
+    <input type="hidden" name="id" value="<%= studentId %>">
+    <select class="" name="getSubject">
+      <% for(let i=0; i<subjects.length; i++){ %>
+        <option value="<%= subjects[i].id %>"><%= subjects[i].name %></option>
+      <% } %>
+    </select>
+    <input type="submit">
+  </form>
+
+<%- include ../partials/footer.ejs%>

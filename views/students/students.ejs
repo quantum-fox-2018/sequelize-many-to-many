@@ -1,0 +1,30 @@
+<%- include ../partials/header.ejs%>
+  <h3>Data Students</h3></br>
+  <a href="students/add">Add Student</a></br></br>
+  <table>
+    <thead>
+      <th>No</th>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Options</th>
+    </thead>
+    <tbody>
+      <% for(let i=0; i<students.length; i++){ %>
+        <tr>
+          <td><%= i+1 %></td>
+          <td><%= students[i].id %></td>
+          <td><%= students[i].firstName %></td>
+          <td><%= students[i].lastName %></td>
+          <td><%= students[i].email %></td>
+          <td><a href="/students/<%= students[i].id %>/addSubject">Add Subject</a></td>
+          <td>
+            <a href="/students/<%= students[i].id %>/edit">Edit</a>
+            <a href="/students/<%= students[i].id %>/delete">Delete</a>
+          </td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+<%- include ../partials/footer.ejs%>

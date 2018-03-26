@@ -1,0 +1,9 @@
+<%- include ../partials/header.ejs%>
+    <h3>Give Score</h3>
+    <form action="<%= formAction %>" method="post">
+      <input type="hidden" value="<%= studentId %>" name="studentId">
+      <input type="hidden" value="<%= subjectId %>" name="subjectId">
+      <input type="integer" value="<%= score %>" name="newScore" placeholder="Score"><br>
+      <input type="submit">
+    </form>
+<%- include ../partials/footer.ejs%>
