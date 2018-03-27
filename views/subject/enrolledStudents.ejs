@@ -1,0 +1,57 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body class="container">
+
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <main>
+    <div class="jumbotron">
+      <h2 align="center"><%= studentSubjects[0].Subject.subject_name %></h2>
+      <a href='/subjects'>return to subject list</a>
+      <br>
+      <h5 style="color:red">
+        <%= info %>
+      </h5>
+
+      <table class="table">
+        <tr>
+          <% heads.forEach(head => {%>
+          <th>
+            <%= head %>
+          </th>
+          <%})%>
+        </tr>
+        <% studentSubjects.forEach(student => {%>
+          <tr>
+            <td>
+              <%= student.Student.first_name %> <%= student.Student.last_name %>
+            </td>
+            <td>
+              <% if(!student.score) { %>
+                <a href='/subjects/<%= student.StudentId %>/givescore'>Give Score</a> %>
+              <% } else { %>
+              <%= student.score %>
+              <% } %>
+            </td>
+          </tr>
+          <%})%>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
+
+</body>
+
+</html>

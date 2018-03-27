@@ -1,0 +1,68 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body class="container">
+
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <main>
+    <div class="jumbotron">
+      <a href='/students/add'>Add Student</a>
+      <br>
+      <br>
+      <table class="table">
+        <tr>
+        <% heads.forEach(head => {%>
+          <th>
+            <%= head %>
+          </th>
+        <%})%>
+          <th>
+            Actions
+          </th>
+          <th>
+            Option
+          </th>
+        </tr>
+        <% students.forEach((student, i) => {%>
+          <tr>
+            <td>
+              <%= i+1 %>
+            </td>
+            <td>
+              <%= student.first_name %>
+            </td>
+            <td>
+              <%= student.last_name %>
+            </td>
+            <td>
+              <%= student.email %>
+            </td>
+            <td>
+                <a href='/students/<%= student.id %>/addsubject'>Add Subject</a>
+            </td>
+            <td>
+              <a href='/students/<%= student.id %>/edit'>edit</a> |
+              <a href='/students/<%= student.id %>/delete' onclick="return confirm('delete this student: <%= student.first_name %>?')">delete</a>
+            </td>
+          </tr>
+          <%})%>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body class="container">
+
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <main>
+    <div class="jumbotron">
+      <a href='/students'>Show All Data</a>
+      <br>
+      <h5 style="color:red">
+        <%= info %>
+      </h5>
+
+      <h3 align="center">Add Subject to Student</h3>
+      <table class="table">
+        <tr>
+          <td>
+            <%= heads[0] %>
+          </td>
+          <td>
+            <%= student.first_name %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= heads[1] %>
+          </td>
+          <td>
+            <%= student.last_name %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= heads[2] %>
+          </td>
+          <td>
+            <%= student.email %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= heads[3] %>
+          </td>
+          <td>
+            <% subjects.forEach((subject, i) => { %>
+              <%= i+1 %>. <%= subject.subject_name %> <br>
+            <% }) %>
+          </td>
+        </tr>
+      </table>
+
+      <form action="" method="post">
+        <div class="form-group">
+          <label>Choose Subject</label>
+          <br>
+          <select type="text" name="SubjectId">
+            <% addSubjects.forEach(subject => { %>
+              <option value="<%= subject.id %>">
+                <%= subject.subject_name %>
+              </option>
+              <% }) %>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
+
+</body>
+
+</html>
