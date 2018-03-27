@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Student Add Data</title>
+  </head>
+  <body>
+    <h1 align="center">Add Student Data</h1>
+    <div style="text-align:center">
+      <a href="/students">show all data</a>
+    </div>
+    <form action="/students/add" method="POST">
+      First name: <br/>
+      <input type="text" name="first_name"> <br/>
+      Last name: <br/>
+      <input type="text" name="last_name"> <br/>
+      Email: <br/>
+      <input type="text" name="email"> <br/> <br/>
+      <input type="submit" onclick="return alert('Data added!')" value="Add Student"/>
+    </form>
+  </body>
+</html>

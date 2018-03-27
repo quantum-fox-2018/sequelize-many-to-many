@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>Students Data</title>
+  </head>
+  <body>
+    <h1 align="center">Students Data</h1>
+    <div style="text-align:center">
+      <a href="/students/add">add student</a> || <a href="/">home</a>
+    </div>
+    <table border="1">
+      <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+        <th>Options</th>
+      </tr>
+      <% students.forEach(student => { %>
+        <tr>
+          <th> <%= student.id %> </th>
+          <th> <%= student.first_name %> </th>
+          <th> <%= student.last_name %> </th>
+          <th> <%= student.email %> </th>
+          <th> <a href="/students/<%=student.id%>/addsubject">Add Subject</a></th>
+          <th> <a href="/students/edit/<%=student.id%>">Edit</a> | <a href="/students/delete/<%=student.id%>" onclick="return confirm('Delete this student?')">Delete</a></th>
+        </tr>
+      <% }) %>
+    </table>
+  </body>
+</html>

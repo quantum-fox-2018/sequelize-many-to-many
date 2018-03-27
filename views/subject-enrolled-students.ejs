@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Enrolled Students</title>
+  </head>
+  <body>
+    <h1 align="center"><%= subject %></h1>
+    <div style="text-align:center">
+      <a href="/subjects">return to subject list</a>
+    </div>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Score</th>
+      </tr>
+      <% students.forEach(student => { %>
+        <tr>
+          <th> <%= student.StudentId %></th>
+          <th> <%= student.score %> </th>
+        </tr>
+      <% }) %>
+    </table>
+  </body>
+</html>
