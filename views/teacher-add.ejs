@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Teacher Add Data</title>
+  </head>
+  <body>
+    <h1 align="center">Add Teacher Data</h1>
+    <div style="text-align:center">
+      <a href="/teachers">show all data</a>
+    </div>
+    <%if(typeof err != "undefined"){%>
+      <div style="color:red;"> <%= err %> </div>
+    <% } %>
+    <form action="/teachers/add" method="POST">
+      First name: <br/>
+      <input type="text" name="first_name"> <br/>
+      Last name: <br/>
+      <input type="text" name="last_name"> <br/>
+      Email: <br/>
+      <input type="text" name="email"> <br/>
+      Subject: <br/>
+      <select name="subject">
+        <option></option>
+        <% subjects.forEach(subject => { %>
+          <option value="<%= subject.id %>"> <%= subject.subject_name %> </option>
+        <% }) %>
+      </select> <br/> <br/>
+      <input type="submit" value="Add Teacher"/>
+    </form>
+  </body>
+</html>

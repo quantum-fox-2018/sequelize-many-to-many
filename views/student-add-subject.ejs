@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Student Edit Data</title>
+  </head>
+  <body>
+    <h1 align="center">Add Subject to Student</h1>
+    <div style="text-align:center">
+      <a href="/students">show all data</a>
+    </div>
+    <table>
+      <tr>
+        <th>First Name</th>
+        <th><%= student.first_name %></th>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <th><%= student.last_name %></th>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <th><%= student.email %></th>
+      </tr>
+      <% studentSubjects.forEach(subject => { %>
+        <tr>
+          <th> Subject </th>
+          <th> <%= subject.subject_name %> </th>
+        </tr>
+      <% }) %>
+    </table>
+
+    <form action="/students/<%= student.id %>/addsubject" method="POST">
+      <h3>Choose Subject</h3>
+      <select name="subject">
+        <% subjects.forEach(subject => { %>
+          <option value="<%= subject.id %>"> <%= subject.subject_name %> </option>
+        <% }) %>
+      </select> <br/> <br/>
+      <input type="submit" onclick="return alert('Subject added!')" value="Add Subject"/>
+    </form>
+  </body>
+</html>
